@@ -3,8 +3,8 @@ module Jekyll
 
         def initialize(tag_name, text, tokens)
             super
-            @text = text
-            @id = text.camelcase(:lower)
+            @text = tokens[0]#text.gsub('\"', '')
+            @id = @text#.camelize(:lower)
         end
 
         def render(context)

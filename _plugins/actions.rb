@@ -3,20 +3,19 @@ module Jekyll
 
         def initialize(tag_name, text, tokens)
             super
-            @text = text
-            @id = text.strip('\\"').camelcase(:lower)
+            @text = tokens[0]#text.gsub('\"', '')
+            @id = @text#.camelize(:lower)
             @args = tokens
         end
 
         def render(context) 
-            args = ""
-            for i, arg in @args
+            @args.each_with_index do |arg, idx|
                 case arg
                 when 'select'
-                    args += "<select id='#{@id}#{i}'><option>0</option></select>"
+                    puts "<select id='#{@id}#{idx}'><option>0</option></select>"
                 end
             end
-            return args "<var id='#{@id}'>#{@text}</var>"
+            "<var id='#{@id}'>#{@text}</var>"
         end
 
     end
