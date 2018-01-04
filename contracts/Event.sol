@@ -5,6 +5,9 @@ import "EventToken.sol";
 
 contract Event is Owned
 {
+    // Event has a name
+    string public name;
+
     // Event token
     EventToken public token;
 
@@ -26,11 +29,13 @@ contract Event is Owned
     event TicketReceipt(uint256 ticketsBought, uint256 change);
     event RefundFailed(address holder, uint256 amount);
 
-    function Event(uint256 _seats,
+    function Event(string _name,
+                   uint256 _seats,
                    uint256 _price,
                    uint256 _rsvpCap)
         public
     {
+        name = _name;
         seats = _seats;
         seatsAvailable = seats;
         price = _price;
