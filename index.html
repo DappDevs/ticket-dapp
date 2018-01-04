@@ -1,0 +1,28 @@
+---
+title: DappDevs Ticketing Dapp
+---
+
+<script src="https://raw.githubusercontent.com/ethereum/web3.js/0.19.0/dist/web3.min.js"></script>
+
+<p>Ticket Sales for: <b id='eventName'>[[Event Name]]</b></p>
+
+<p>Seats Available: (
+        <b id='seatsAvailable'>[[Seats Available]]</b>
+        /
+        <b id='seatsTotal'>[[Seats Total]]</b>
+    )</p>
+
+<p>Ticket Price: <b id='price'>[[Ticket Price]]</b></p>
+
+<select></select>
+<button>Buy Tickets for this event!</button>
+
+<p>Your Tickets: <b id='ticketsHeld'>[[Number of Tickets]]</b></p>
+
+<select></select>
+<button>Refund your tickets</button>
+
+<script type='javascript'>
+    var Web3 = require('web3');
+    var web3 = new Web3();
+</script>
