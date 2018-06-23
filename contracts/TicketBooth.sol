@@ -120,6 +120,11 @@ contract TicketBooth
      * @param _eventCost (uint "wei") Cost of purchasing a ticket
      * @param _ticketsLeft (uint) Number of tickets available for purchase
      */
+    // OLD CODE ALERT!
+    // As of solidity 0.4.22,
+    // constructors are now designated by the constructor keyword, not the contract name ;/
+    // E.g.: 
+    // constructor (
     function TicketBooth (
         address _token,
         string _eventDetailsURL,
@@ -149,12 +154,14 @@ contract TicketBooth
      * @dev Only ticketMaster may do this
      *
      * @param _eventDetailsURL (string) The event's details stored in IPFS
+     * @param _eventCost (uint) The event's cost
      */
-    function updateEventDetails(string _eventDetailsURL)
+    function updateEventDetails(string _eventDetailsURL, uint _eventCost)
         public
         onlyTicketMaster()
     {
         eventDetailsURL = _eventDetailsURL;
+        eventCost = _eventCost;
     }
 
     /* 
@@ -245,6 +252,9 @@ contract TicketBooth
     {
         // Event is locked in!
         require(eventConfirmed);
+
+        // Guard against double punches
+        require(false == ticketHolders[_ticketHolder].punched);
 
         // Punch Ticket Holder's ticket
         ticketHolders[_ticketHolder].punched = true;

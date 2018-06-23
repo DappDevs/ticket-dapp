@@ -1,2 +1,5 @@
 # Jekyll generated content
 _site/
+mnemonic.secret.js
+package-lock.json
+*/*.swp
