@@ -1,2 +1,15 @@
 # Jekyll generated content
 _site/
+package-lock.json
+*/*.swp
+
+mnemonic.secret.js
+
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
